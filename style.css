@@ -1,0 +1,11 @@
+body {
+    overflow: hidden;
+}
+
+polyline {
+    cursor: pointer;
+}
+
+polyline:hover {
+    fill: #3904b9;
+}
