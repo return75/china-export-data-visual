@@ -1,4 +1,4 @@
-import formatData from './format-data'
+import formatData from './formatData'
 import getElapsedTime from "./elapsedTime";
 import {exportCircleSize, particleAcceleration} from "./constants";
 

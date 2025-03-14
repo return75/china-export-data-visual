@@ -55,7 +55,7 @@ function createBezierCurveFunction(source, destination) {
     if (sourceXY && destinationXY) {
         let p0 = sourceXY
         let p2 = destinationXY
-        let p1 = {x: (sourceXY.x + destinationXY.x) / 2 , y: (sourceXY.y + destinationXY.y) / 4}
+        let p1 = {x: .2 * sourceXY.x + .8 * destinationXY.x  , y: destinationXY.y - 100}
 
         let bezierCurveFunction =  t => {
             const x = (1 - t) * (1 - t) * p0.x + 2 * (1 - t) * t * p1.x + t * t * p2.x;
