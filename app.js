@@ -1,5 +1,6 @@
-import setSvgDimensions from "./src/setSVGDimension";
-import addCountriesToMap from "./src/addCountriesToMap";
+import setSvgDimensions from "./src/create-map/setSVGDimension";
+import addCountriesToMap from "./src/create-map/addCountriesToMap";
+import './src/data-animate/startAnimation'
 
 
 setSvgDimensions()

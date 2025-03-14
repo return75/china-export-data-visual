@@ -1,4 +1,4 @@
-import countriesDataSet from "./data/world.json";
+import countriesDataSet from "../data/world.json";
 
 function formatCountriesData () {
     const countries = []
