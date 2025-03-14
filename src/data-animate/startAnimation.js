@@ -1,6 +1,6 @@
 import formatData from './formatData'
 import getElapsedTime from "./elapsedTime";
-import {exportCircleSize, particleAcceleration} from "./constants";
+import {exportCircleSize, particleAcceleration, particleColor} from "./constants";
 
 const svg = document.querySelector('svg')
 
@@ -18,7 +18,6 @@ function startAnimation () {
 
 function transferParticles () {
     particles.forEach(particle => {
-        //console.log(particle.startTransferTime , getElapsedTime())
         if (particle.startTransferTime < getElapsedTime()) {
             transferParticle(particle)
         }
@@ -43,13 +42,12 @@ function drawParticles () {
 }
 
 function createParticle (particle) {
-    //console.log(particle.transferTimeElapsed / particle.totalTransitionTime())
     let {x, y} = particle.bezierCurveFunction(particle.transferTimeElapsed / particle.totalTransitionTime())
     let circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
     circle.setAttribute('cx', x)
     circle.setAttribute('cy', y)
     circle.setAttribute('r', exportCircleSize)
-    circle.setAttribute('fill', '#0062c2')
+    circle.setAttribute('fill', particleColor)
     return circle
 }
 

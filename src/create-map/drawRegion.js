@@ -1,7 +1,7 @@
 import {xMercator, yMercator} from "./mercator";
 const svg = document.querySelector('svg')
-const regionColor = '#a9a9a9'
-const regionStroke = '#eeeeee'
+const regionColor = '#1c1691'
+const regionStroke = '#9674f8'
 
 function drawRegion(region, countryData) {
     let regionPoints = []

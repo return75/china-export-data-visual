@@ -1,5 +1,6 @@
 body {
     overflow: hidden;
+    background: linear-gradient(180deg, rgb(9, 5, 47) 0%, rgb(69, 75, 231) 49%, rgb(5, 6, 44) 100%);
 }
 
 polyline {
@@ -7,5 +8,5 @@ polyline {
 }
 
 polyline:hover {
-    fill: #3904b9;
+    fill: #a1a9fa;
 }

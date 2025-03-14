@@ -1,7 +1,7 @@
 import exportData from './../data/data.json'
 import countriesData from './../data/world.json'
 import {xMercator, yMercator} from "../create-map/mercator";
-import {exportCircleValue, exportCircleSize, totalAnimationTime, particleVelocity} from "./constants";
+import {exportCircleValue, exportCircleSize, totalAnimationTime, particleVelocity, particleColor} from "./constants";
 
 function formatData () {
     let exportParticles = []
