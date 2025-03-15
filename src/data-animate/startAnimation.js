@@ -5,7 +5,7 @@ import {exportCircleSize, particleAcceleration, particleColor} from "./constants
 const svg = document.querySelector('svg')
 
 let particles = formatData()
-particles = particles.filter(particle => particle.bezierCurveFunction).filter((p, index) => index < 4000)
+particles = particles.filter(particle => particle.bezierCurveFunction)
 
 
 function startAnimation () {
@@ -19,7 +19,11 @@ function startAnimation () {
 function transferParticles () {
     particles.forEach(particle => {
         if (particle.startTransferTime < getElapsedTime()) {
-            transferParticle(particle)
+            if (particle.transferTimeElapsed / particle.totalTransitionTime() <= 1) {
+                transferParticle(particle)
+            } else {
+                particle.reachedToDestination = true
+            }
         }
     })
 }
@@ -47,7 +51,7 @@ function createParticle (particle) {
     circle.setAttribute('cx', x)
     circle.setAttribute('cy', y)
     circle.setAttribute('r', exportCircleSize)
-    circle.setAttribute('fill', particleColor)
+    circle.setAttribute('fill', particle.color || 'black')
     return circle
 }
 
@@ -58,4 +62,4 @@ function clearParticlesFromDom () {
 }
 
 
-startAnimation()
+//startAnimation()

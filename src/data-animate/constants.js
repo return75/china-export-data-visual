@@ -1,5 +1,5 @@
 const exportCircleValue = 500000000
-const exportCircleSize = 3
+const exportCircleSize = 2
 const totalAnimationTime = 20000 // in milliseconds
 const particleVelocity = .9
 const particleAcceleration = .04

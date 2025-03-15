@@ -1,11 +1,12 @@
 import exportData from './../data/data.json'
 import countriesData from './../data/world.json'
+import countriesColor from './../data/countryColor.json'
 import {xMercator, yMercator} from "../create-map/mercator";
-import {exportCircleValue, exportCircleSize, totalAnimationTime, particleVelocity, particleColor} from "./constants";
+import {exportCircleValue, totalAnimationTime, particleVelocity} from "./constants";
 
 function formatData () {
     let exportParticles = []
-    exportData.forEach(exportObject => {
+    exportData.filter(item => item.value > 10000000000).forEach(exportObject => {
         let particlesCount = Math.floor(exportObject.value / exportCircleValue)
         let remainedValue = exportObject.value - particlesCount * exportCircleValue
 
@@ -17,6 +18,8 @@ function formatData () {
                 startTransferTime: Math.random() * totalAnimationTime,
                 transferTimeElapsed: 0,
                 velocity: particleVelocity,
+                reachedToDestination: false,
+                color: getCountryColor(exportObject.countries),
                 totalTransitionTime() {
                   return particleVelocity * this.bezierLength
                 },
@@ -31,6 +34,8 @@ function formatData () {
                 exportValue: remainedValue,
                 transferTimeElapsed: 0,
                 velocity: particleVelocity,
+                reachedToDestination: false,
+                color: getCountryColor(exportObject.countries),
                 startTransferTime: Math.random() * totalAnimationTime,
                 bezierCurveFunction: createBezierCurveFunction(exportObject.reporter, exportObject.countries),
                 bezierLength: calculateBezierLength(exportObject.reporter, exportObject.countries),
@@ -106,6 +111,11 @@ function getBezierPoint(t, p0, p1, p2) {
     const x = (1 - t) * (1 - t) * p0.x + 2 * (1 - t) * t * p1.x + t * t * p2.x;
     const y = (1 - t) * (1 - t) * p0.y + 2 * (1 - t) * t * p1.y + t * t * p2.y;
     return { x, y };
+}
+
+function getCountryColor (country) {
+    let c = countriesColor.find(item => item.name === country)?.color
+    return c
 }
 
 export default formatData

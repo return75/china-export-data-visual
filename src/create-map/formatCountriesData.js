@@ -7,6 +7,8 @@ function formatCountriesData () {
             countries.push( {
                 id: item.id,
                 name: item.properties.name,
+                centroid: item.properties.centroid,
+                land: item.properties.land,
                 type: item.geometry.type,
                 regions: item.geometry.coordinates,
             })
